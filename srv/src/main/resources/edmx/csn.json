@@ -1,0 +1,54 @@
+{
+  "namespace": "my.company",
+  "definitions": {
+    "CatalogService": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "CatalogService.Users": {
+      "kind": "entity",
+      "@cds.persistence.name": "CATALOGSERVICE_USERS",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "my.company.Users"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "email": {
+          "@cds.persistence.name": "EMAIL",
+          "key": true,
+          "type": "cds.String"
+        },
+        "password": {
+          "@cds.persistence.name": "PASSWORD",
+          "type": "cds.String"
+        }
+      },
+      "$syntax": "projection"
+    },
+    "my.company.Users": {
+      "kind": "entity",
+      "@cds.persistence.name": "MY_COMPANY_USERS",
+      "elements": {
+        "email": {
+          "@cds.persistence.name": "EMAIL",
+          "key": true,
+          "type": "cds.String"
+        },
+        "password": {
+          "@cds.persistence.name": "PASSWORD",
+          "type": "cds.String"
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v1.26.2"
+  },
+  "$version": "1.0",
+  "@sql_mapping": "plain"
+}
